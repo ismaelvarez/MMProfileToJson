@@ -1,0 +1,26 @@
+{
+  "remove-time-unit": [
+    "default_sampling_period",
+    "default_storage_period"
+  ],
+  "remove-white-spaces": [
+    "lower_limit",
+    "upper_limit"
+  ],
+  "remove-line-feed": [
+    "all"
+  ],
+   "default-values":{
+    "description": "No description",
+    "maximum": "0",
+    "minimum": "0",
+    "units": "None",
+    "sampling": "0.0",
+    "storage": "0.0",
+    "default_sampling_period": "0.0",
+    "default_storage_period": "0.0",
+    "height": "0",
+    "width": "0",
+    "values": ""
+  }
+}
