@@ -81,15 +81,20 @@ def check_limit_format(value, width, height=0):
 
     if height > 0:
         first_dimension = limit.split(";")
-        if len(first_dimension) != height:
+        if len(first_dimension) < height:
             return False
 
         for dimension in first_dimension:
             second = dimension.split(",")
-            if len(second) != width:
+            if len(second) < width:
                 return False
     else:
         first_dimension = limit.split(",")
+
+        # If dimensions are wrong in profiles, return true
+        if len(first_dimension) > width:
+            return True
+
         if len(first_dimension) != width:
             return False
     return True
@@ -204,7 +209,7 @@ def profile_magnitudes_parser(lines):
                 begin = normalise_string.find('=') + 1
             else:
                 # The enum type is defined in the upper and lower limit
-                if magnitude_property[0] == "lower_limit":
+                if magnitude_property[0] == "lower_limit" or magnitude_property[0] == "upper_limit":
                     enum_type = normalise_string[normalise_string.find('=')+1:normalise_string.find(':')].strip()
 
             value = normalise_string[begin:].strip()
